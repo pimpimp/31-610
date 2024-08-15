@@ -1,3 +1,14 @@
+<?php
+    $data = $_SERVER["REQUEST_METHOD"] === "POST";
+    if ($data) {
+        $name = htmlspecialchars($_POST['name']);
+        $class = htmlspecialchars($_POST['class']);
+        $number = htmlspecialchars($_POST['number']);
+        $sex = isset($_POST['sex']) ? implode(', ', $_POST['sex']) : '';
+
+    goto result;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,18 +20,6 @@
 </head>
 <body class="p-4">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <?php
-        $data = $_SERVER["REQUEST_METHOD"] === "POST";
-
-        if ($data) {
-            $name = htmlspecialchars($_POST['name']);
-            $class = htmlspecialchars($_POST['class']);
-            $number = htmlspecialchars($_POST['number']);
-            $sex = isset($_POST['sex']) ? implode(', ', $_POST['sex']) : '';
-
-        goto result;
-        }
-    ?>
     <div class="container">
         <form method="post" action="" class="mx-auto">
             <label class="mt-2">ชื่อ-สกุล: </label>
@@ -40,17 +39,18 @@
     </div>
     
     <?php
+    
     result:
     if ($data): ?>
         <div class="container mt-4">
-            <h4>ข้อมูลที่กรอก:</h4>
-            <p><strong>ชื่อ-สกุล:</strong> <?php echo $name; ?></p>
-            <p><strong>ชั้น:</strong> <?php echo $class; ?></p>
-            <p><strong>เลขที่:</strong> <?php echo $number; ?></p>
-            <p><strong>เพศ:</strong> <?php echo $sex; ?></p>
+            <h4><strong>ข้อมูลที่กรอก: </strong></h4>
+            <p><strong>ชื่อ-สกุล: </strong> <?php echo $name; ?></p>
+            <p><strong>ชั้น: </strong> <?php echo $class; ?></p>
+            <p><strong>เลขที่: </strong> <?php echo $number; ?></p>
+            <p><strong>เพศ: </strong> <?php echo $sex; ?></p>
             <a href="form.php" class="btn btn-primary btn-sm d-block px-4 mx-auto mt-4">กลับไปที่ฟอร์ม</a>
         </div>
     <?php endif; ?>
-    //พิมพ์ชนก สุขนุ่ม ม.6/10 เลขที่ 31
+    <!-- พิมพ์ชนก สุขนุ่ม ม.6/10 เลขที่ 31 -->
 </body>
 </html>
